@@ -4,7 +4,7 @@ import "./App.css";
 import Accordion from "./components/Accordion";
 import { Rating } from "./components/Rating";
 
-function App() {
+function App(props: any) {
   // делает что-то полезное
   // обязана вернуть JSX
 
@@ -12,11 +12,11 @@ function App() {
     <div>
       <PageTitle title="This is APP Component" />
       <PageTitle title="My friends" />
-      Article 1
-      <Rating value={3} />
-      <Accordion title="Menu" />
-      <Accordion title="Page" />
-      Article 2
+      {/* Article 1
+      <Rating value={3} /> */}
+      <Accordion titleValue="Menu" collapsed={true} />
+      <Accordion titleValue="Page" collapsed={false} />
+
       <Rating value={0} />
       <Rating value={1} />
       <Rating value={2} />
@@ -27,7 +27,11 @@ function App() {
   );
 }
 
-function PageTitle(props: any) {
+type PageTitlePropsType = {
+  title: string;
+};
+
+function PageTitle(props: PageTitlePropsType) {
   console.log("PageTitle rendering");
   return <h1>{props.title}</h1>;
 }
